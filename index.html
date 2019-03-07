@@ -14,13 +14,13 @@
       </div>
       <button class="addOption">add</button>
     </div>
-    <div class="resultsection"></div>
-    <button>Go!</button>
+    <div class="resultSection"></div>
+    <button class="submit">Go!</button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script>
       $(function() {
-$('.resultsection').hide()
+$('.resultSection').hide()
 
 var add_option = function (){
   $('.inputs').append('<input></input>')
@@ -28,6 +28,18 @@ var add_option = function (){
 
 $('.addOption').click(add_option)
 
+var options = []
+var submit = function(){
+  $('inputSection').hide()
+  $('.resultSection').css ('display','flex')
+  $('input').each(function() {
+  options.push($(this).val())
+  })
+  var winner = options[Math.floor(Math.random() * options.length)]
+  console.log(winner)
+  $('.resultSection').text(winner)
+}
+$('.submit').click(submit)
       })
       </script>
   </body>
